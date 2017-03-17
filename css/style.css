@@ -1,0 +1,154 @@
+*{ margin:0; padding:0;}
+
+/* 天空背景， 上次作业老师建议我用vw和vh来达到全屏效果，我查阅了这两个用法之后还是没能
+完全理解，所以又尝试天空和草地各设置宽100%高50%，结果天空完全占据了页面，所以目前设
+置成了这样 */
+.sky {
+	width: 100%; height: 50vh;
+	background: -webkit-linear-gradient( rgb(196, 228, 253), #FFFFFF);
+	background:    -moz-linear-gradient( rgb(196, 228, 253), #FFFFFF);
+	background:      -o-linear-gradient( rgb(196, 228, 253), #FFFFFF);
+	background:         linear-gradient( rgb(196, 228, 253), #FFFFFF);
+	z-index: -1;
+	position: relative;
+	overflow: hidden;
+}
+.grass{
+	width: 100%; height: 50vh;
+	background: -webkit-linear-gradient(  #FFFFFF , rgb(148, 190, 89));
+	background:    -moz-linear-gradient(  #FFFFFF , rgb(148, 190, 89));
+	background:      -o-linear-gradient(  #FFFFFF , rgb(148, 190, 89));
+	background:         linear-gradient(  #FFFFFF , rgb(148, 190, 89));
+	z-index: -1;
+	position: relative;
+}
+
+/* 云彩，上次老师不建议用id，这次本来打算取消id属性，改用nthchild来控制每个云的大小，
+但失败了，不确定思路是否正确，所以还是暂时加进了id*/
+
+.cloud{ 
+	width:330px; 
+	height:110px; 
+	background: #FFFFFF;
+	border-radius:100px;
+	position:relative;
+	margin:0 auto;
+}
+	
+.cloud:after,
+.cloud:before{
+	content:""; 
+	position:absolute; 
+	background: #FFFFFF; 
+	z-index:1;
+}
+
+.cloud:after{ 
+	width:100px; 
+	height:160px; 
+	top:-30px; 
+	left:35px; 
+	border-radius:80px;
+	transform: rotate(-25deg);
+}
+
+.cloud:before{ 
+	width:180px; 
+	height:180px; 
+	top:-60px; 
+	right:50px; 
+	border-radius:180px;
+}
+
+/* 控制每个云的位置和动画速度 */
+#div1{
+	position: absolute;
+	top: 35px;
+	opacity: 0.6;
+	-webkit-animation: cloudmove1 6s linear  infinite;
+	   -moz-animation: cloudmove1 6s linear  infinite;
+	    -ms-animation: cloudmove1 6s linear  infinite;
+	     -o-animation: cloudmove1 6s linear  infinite;
+	        animation: cloudmove1 6s linear  infinite;
+	z-index:100;
+}
+#div2{
+	position: absolute;
+	top: 114px;
+	opacity: 0.8;
+	-webkit-animation: cloudmove2 5s linear  infinite;
+	   -moz-animation: cloudmove2 5s linear  infinite;
+	    -ms-animation: cloudmove2 5s linear  infinite;
+	     -o-animation: cloudmove2 5s linear  infinite;
+	        animation: cloudmove2 5s linear  infinite;
+	z-index:100;
+}
+#div3{
+	position: absolute;
+	top: 155px;
+	opacity: 0.7;
+	-webkit-animation: cloudmove3 4s linear  infinite;
+	   -moz-animation: cloudmove3 4s linear  infinite;
+	    -ms-animation: cloudmove3 4s linear  infinite;
+	     -o-animation: cloudmove3 4s linear  infinite;
+	        animation: cloudmove3 4s linear  infinite;
+	z-index:100;
+}
+#div4{
+	position: absolute;
+	top: 72px;
+	opacity: 0.8;
+	-webkit-animation: cloudmove4 5s linear  infinite;
+	   -moz-animation: cloudmove4 5s linear  infinite;
+	    -ms-animation: cloudmove4 5s linear  infinite;
+	     -o-animation: cloudmove4 5s linear  infinite;
+	        animation: cloudmove4 5s linear  infinite;
+	z-index:100;
+}
+#div5{
+	position: absolute;
+	top: -21px;
+	opacity: 0.9;
+	-webkit-animation: cloudmove5 4s linear  infinite;
+	   -moz-animation: cloudmove5 4s linear  infinite;
+	    -ms-animation: cloudmove5 4s linear  infinite;
+	     -o-animation: cloudmove5 4s linear  infinite;
+	        animation: cloudmove5 4s linear  infinite;
+	z-index:100;
+}
+
+/* 实现动画效果，本来的思路是让云从整个div的最右边飞向最左边，但无论怎样都无法实现，
+不确定原因是方法用错还是之前天空width和height没有设置好而导致，因此用translate来
+实现效果，但是当缩小比例尺后就会发现瑕疵 */
+
+@keyframes cloudmove1{
+	from { transform:scale(0.4)  translateX(4000px) ; }
+    to   { transform:scale(0.4)  translateX(-700px); }
+}
+@keyframes cloudmove2{
+	from { transform:scale(0.4)  translateX(4000px) ; }
+    to   { transform:scale(0.4)  translateX(-700px); }
+}
+@keyframes cloudmove3{
+	from { transform:scale(0.4)  translateX(4000px) ; }
+    to   { transform:scale(0.4)  translateX(-700px); }
+}
+@keyframes cloudmove4{
+	from { transform:scale(0.6)  translateX(4000px) ; }
+    to   { transform:scale(0.6)  translateX(-700px); }
+}
+@keyframes cloudmove5{
+	from { transform:scale(0.2)  translateX(9000px) ; }
+    to   { transform:scale(0.2)  translateX(-700px); }
+}
+
+/* 加入兔子图片，同样，感觉是因为没能正确理解如何设置好width和height，导致不能按要求一样
+距离底部50像素，距离右边200像素，只能调成控制台一点一点调到右下角 */
+.grass img{
+	position: absolute;
+	bottom: -537px;
+	right: -525px;
+	z-index: 5;
+	transform: scale(0.1);
+}
+

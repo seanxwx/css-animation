@@ -1,8 +1,6 @@
 *{ margin:0; padding:0;}
 
-/* 天空背景， 上次作业老师建议我用vw和vh来达到全屏效果，我查阅了这两个用法之后还是没能
-完全理解，所以又尝试天空和草地各设置宽100%高50%，结果天空完全占据了页面，所以目前设
-置成了这样 */
+/*Sky and grass part */
 .sky {
 	width: 100%; height: 50vh;
 	background: -webkit-linear-gradient( rgb(196, 228, 253), #FFFFFF);
@@ -23,8 +21,7 @@
 	position: relative;
 }
 
-/* 云彩，上次老师不建议用id，这次本来打算取消id属性，改用nthchild来控制每个云的大小，
-但失败了，不确定思路是否正确，所以还是暂时加进了id*/
+/* Try to use pseudo-element to make cloud shape*/
 
 .cloud{ 
 	width:330px; 
@@ -60,7 +57,7 @@
 	border-radius:180px;
 }
 
-/* 控制每个云的位置和动画速度 */
+/* Control the position and speed of cloud, will try to use class instead of id later */
 #div1{
 	position: absolute;
 	top: 35px;
@@ -117,9 +114,8 @@
 	z-index:100;
 }
 
-/* 实现动画效果，本来的思路是让云从整个div的最右边飞向最左边，但无论怎样都无法实现，
-不确定原因是方法用错还是之前天空width和height没有设置好而导致，因此用translate来
-实现效果，但是当缩小比例尺后就会发现瑕疵 */
+/* Because the problem of setting the width of sky, when zoom out the window, it will show the problem, the cloud just appear suddenly,
+will try to fix the problem later*/
 
 @keyframes cloudmove1{
 	from { transform:scale(0.4)  translateX(4000px) ; }
@@ -142,8 +138,7 @@
     to   { transform:scale(0.2)  translateX(-700px); }
 }
 
-/* 加入兔子图片，同样，感觉是因为没能正确理解如何设置好width和height，导致不能按要求一样
-距离底部50像素，距离右边200像素，只能调成控制台一点一点调到右下角 */
+
 .grass img{
 	position: absolute;
 	bottom: -537px;
